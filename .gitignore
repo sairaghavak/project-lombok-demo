@@ -8,3 +8,6 @@
 
 # Binaries
 target
+
+# Annotation processor config
+.factorypath
