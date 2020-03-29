@@ -12,16 +12,15 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 public class AllArgsConstructorDemoTest {
 
   @Test
-  @DisplayName("should_create_instance_with_args_constructor")
-  void shouldCreateInstanceWithArgsConstructor() {
-    assertNotNull(new AllArgsConstructorDemo("A Field Value"));
-  }
-
-  @Test
-  @DisplayName("should_throw_instantiation_exception_when_creating_instance_with_default_constructor")
-  void shouldThrowInstantiationExceptionWhenCreatingInstanceWithDefaultCaFonstructor() {
+  @DisplayName("should_throw_instantiation_exception_when_creating_instance_with_no_args_constructor")
+  void testDefaultConstructor() {
     assertThrows(InstantiationException.class,
         () -> Class.forName("com.sairaghava.AllArgsConstructorDemo").newInstance());
   }
 
+  @Test
+  @DisplayName("should_create_instance_with_args_constructor")
+  void testParameterizedConstructor() {
+    assertNotNull(new AllArgsConstructorDemo("A Field Value"));
+  }
 }
