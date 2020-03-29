@@ -1,6 +1,7 @@
 package com.sairaghava;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,36 +16,61 @@ public class DataDemoTest {
 
   @Test
   @DisplayName("should_create_instance_with_no_args_constructor")
-  void shouldCreateInstanceWithNoArgsConstructor() {
+  void testDefaultConstructor() {
     assertNotNull(new DataDemo());
   }
 
   @Test
   @DisplayName("should_throw_no_such_method_exception_when_creating_instance_with_args_constructor")
-  void shouldThrowNoSuchMethodExceptionWhenCreatingInstanceWithArgsConstructor() {
+  void testParameterizedConstructor() {
     assertThrows(NoSuchMethodException.class,
         () -> DataDemo.class.getConstructor(String.class).newInstance("A Field Value"));
   }
 
   @Test
   @DisplayName("should_return_string_representation_of_object_when_printing_it")
-  void shouldReturnStringRepresentationOfObjectWhenPrintingIt() {
+  void testToString() {
     assertEquals("DataDemo(aField=null)", new DataDemo().toString());
   }
 
   @Test
   @DisplayName("should_return_field_value_on_calling_accessor")
-  void shouldReturnFieldValueOnCallingAccessor() {
+  void testGetter() {
     assertNull(new DataDemo().getAField());
   }
 
   @Test
   @DisplayName("should_set_field_value_on_calling_mutator")
-  void shouldSetFieldValueOnCallingMutator() {
+  void testSetter() {
     DataDemo dataDemo = new DataDemo();
     dataDemo.setAField("space");
     assertNotNull(dataDemo);
     assertEquals("space", dataDemo.getAField());
   }
 
+  @Test
+  @DisplayName("should_return_true_when_two_data_demo_instances_contains_similar_data")
+  void testEquals() {
+    DataDemo dataDemo1 = new DataDemo();
+    dataDemo1.setAField("sairaghava");
+    System.out.println("Hashcode of dataDemo1 = " + dataDemo1.hashCode());
+    DataDemo dataDemo2 = new DataDemo();
+    dataDemo2.setAField("sairaghava");
+    System.out.println("Hashcode of dataDemo2 = " + dataDemo2.hashCode());
+    assertEquals(dataDemo1, dataDemo2);
+    assertEquals(dataDemo1.hashCode(), dataDemo2.hashCode());
+  }
+
+  @Test
+  @DisplayName("should_return_false_when_two_data_demo_instances_contains_different_data")
+  void testHashCode() {
+    DataDemo dataDemo1 = new DataDemo();
+    dataDemo1.setAField("obj1");
+    System.out.println("Hashcode of dataDemo1 = " + dataDemo1.hashCode());
+    DataDemo dataDemo2 = new DataDemo();
+    dataDemo1.setAField("obj2");
+    System.out.println("Hashcode of dataDemo2 = " + dataDemo2.hashCode());
+    assertNotEquals(dataDemo1, dataDemo2);
+    assertNotEquals(dataDemo1.hashCode(), dataDemo2.hashCode());
+  }
 }

@@ -20,7 +20,7 @@ public class NoArgsConstructorDemoTest {
   @Test
   @DisplayName("should_throw_no_such_method_exception_when_creating_instance_with_args_constructor")
   void testParameterizedConstructor() {
-    assertThrows(NoSuchMethodException.class,
-        () -> NoArgsConstructorDemo.class.getConstructor(String.class).newInstance("A Field Value"));
+    assertThrows(NoSuchMethodException.class, () -> NoArgsConstructorDemo.class
+        .getConstructor(String.class).newInstance("A Field Value"));
   }
 }
