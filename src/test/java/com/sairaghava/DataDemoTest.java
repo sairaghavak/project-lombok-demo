@@ -54,10 +54,8 @@ public class DataDemoTest {
   void testEquals() {
     DataDemo dataDemo1 = new DataDemo();
     dataDemo1.setAField("sairaghava");
-    System.out.println("Hashcode of dataDemo1 = " + dataDemo1.hashCode());
     DataDemo dataDemo2 = new DataDemo();
     dataDemo2.setAField("sairaghava");
-    System.out.println("Hashcode of dataDemo2 = " + dataDemo2.hashCode());
     assertTrue(dataDemo1.equals(dataDemo2));
     assertEquals(dataDemo1.hashCode(), dataDemo2.hashCode());
   }
@@ -67,10 +65,8 @@ public class DataDemoTest {
   void testHashCode() {
     DataDemo dataDemo1 = new DataDemo();
     dataDemo1.setAField("obj1");
-    System.out.println("Hashcode of dataDemo1 = " + dataDemo1.hashCode());
     DataDemo dataDemo2 = new DataDemo();
     dataDemo1.setAField("obj2");
-    System.out.println("Hashcode of dataDemo2 = " + dataDemo2.hashCode());
     assertFalse(dataDemo1.equals(dataDemo2));
     assertNotEquals(dataDemo1.hashCode(), dataDemo2.hashCode());
   }
