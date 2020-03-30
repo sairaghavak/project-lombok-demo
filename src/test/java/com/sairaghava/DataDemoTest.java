@@ -1,11 +1,12 @@
 package com.sairaghava;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -57,7 +58,7 @@ public class DataDemoTest {
     DataDemo dataDemo2 = new DataDemo();
     dataDemo2.setAField("sairaghava");
     System.out.println("Hashcode of dataDemo2 = " + dataDemo2.hashCode());
-    assertEquals(dataDemo1, dataDemo2);
+    assertTrue(dataDemo1.equals(dataDemo2));
     assertEquals(dataDemo1.hashCode(), dataDemo2.hashCode());
   }
 
@@ -70,7 +71,14 @@ public class DataDemoTest {
     DataDemo dataDemo2 = new DataDemo();
     dataDemo1.setAField("obj2");
     System.out.println("Hashcode of dataDemo2 = " + dataDemo2.hashCode());
-    assertNotEquals(dataDemo1, dataDemo2);
+    assertFalse(dataDemo1.equals(dataDemo2));
     assertNotEquals(dataDemo1.hashCode(), dataDemo2.hashCode());
+  }
+
+  @Test
+  @DisplayName("should_return_false_when_equality_is_checked_with_null")
+  void testEqualityWithNull() {
+    DataDemo dataDemo = new DataDemo();
+    assertFalse(dataDemo.equals(null));
   }
 }
